@@ -8,28 +8,21 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -66,35 +59,39 @@ public class MyActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     public void onStart() {
         super.onStart();
 
         final int REQUEST_CODE_ASK_PERMISSIONS = 123;
-        ActivityCompat.requestPermissions(this,
-                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                REQUEST_CODE_ASK_PERMISSIONS);
+        Log.d("MYActivity", "res: " + ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) );
+        if( ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    REQUEST_CODE_ASK_PERMISSIONS);
 
-        Intent intent = getIntent();
-        String action = intent.getAction();
-        String type = intent.getType();
+        } else {
 
-        if (Intent.ACTION_SEND.equals(action) && type != null) {
-            if ("text/plain".equals(type)) {
-                String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
-                Log.d("MYActivity", "action: " + action);
-                Log.d("MYActivity", "type: " + type);
-                Log.d("MYActivity", "sharedText: " + sharedText);
+            Intent intent = getIntent();
+            String action = intent.getAction();
+            String type = intent.getType();
 
-                //if( sharedText.startsWith("https://youtu.be/") )
-                {
-                    Log.d("MYActivity", "Boom!");
-                    String url = "http://youtube-dl55.herokuapp.com/api/info?url=" + sharedText;
-                    new getJSON().execute(url);
+            if (Intent.ACTION_SEND.equals(action) && type != null) {
+                if ("text/plain".equals(type)) {
+                    String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
+                    Log.d("MYActivity", "action: " + action);
+                    Log.d("MYActivity", "type: " + type);
+                    Log.d("MYActivity", "sharedText: " + sharedText);
+
+                    //if( sharedText.startsWith("https://youtu.be/") )
+                    {
+                        Log.d("MYActivity", "Boom!");
+                        String url = "http://youtube-dl55.herokuapp.com/api/info?url=" + sharedText;
+                        new getJSON().execute(url);
+
+                    }
 
                 }
-
             }
         }
 
