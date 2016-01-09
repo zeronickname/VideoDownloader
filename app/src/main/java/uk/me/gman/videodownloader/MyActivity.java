@@ -101,7 +101,8 @@ public class MyActivity extends AppCompatActivity {
                 Log.d("MYActivity", "type: " + type);
                 Log.d("MYActivity", "sharedText: " + sharedText);
 
-                if( sharedText.startsWith("https://youtu.be/") ) {
+                //if( sharedText.startsWith("https://youtu.be/") )
+                {
                     Log.d("MYActivity", "Boom!");
                     String url = "http://youtube-dl55.herokuapp.com/api/info?url=" + sharedText;
                     new getJSON().execute(url);
@@ -159,17 +160,20 @@ public class MyActivity extends AppCompatActivity {
 
                 Log.i("MYActivity", "out: " + json.toString());
 
-                JSONArray jsonT = json.getJSONObject("info").getJSONArray("formats");
 
                 String downloadURL = json.getJSONObject("info").get("url").toString();
                 String fileName = json.getJSONObject("info").get("title").toString() + "." + json.getJSONObject("info").get("ext").toString();
 
+                /*
+                //DO we care? Just download teh default file
+                JSONArray jsonT = json.getJSONObject("info").getJSONArray("formats");
                 int id = findIdToDownload(jsonT, "mp4", 720);
                 if(id != -1) {
                     downloadURL = json.getJSONObject("info").getJSONArray("formats").getJSONObject(id).get("url").toString();
                 }
+                */
 
-                Log.i("MYActivity", "out: " + downloadURL);
+                Log.i("MYActivity", "downloadUrl: " + downloadURL);
 
                 publishProgress(2);
 
