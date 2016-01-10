@@ -7,4 +7,16 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/hide_settings"
+        android:orderInCategory="100"
+        android:title="@string/hide_settings"
+        android:onClick="hideIcon"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/about_settings"
+        android:orderInCategory="100"
+        android:onClick="showAbout"
+        android:title="@string/about_settings"
+        app:showAsAction="never" />
 </menu>
