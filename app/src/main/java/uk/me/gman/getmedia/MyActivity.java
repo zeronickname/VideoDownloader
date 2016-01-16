@@ -1,4 +1,4 @@
-package uk.me.gman.videodownloader;
+package uk.me.gman.getmedia;
 
 import android.Manifest;
 import android.content.Intent;
@@ -77,7 +77,13 @@ public class MyActivity extends AppCompatActivity implements AsyncResponse {
                 Log.d(TAG, "type: " + type);
                 Log.d(TAG, "sharedText: " + sharedText);
 
-                //if( sharedText.startsWith("https://youtu.be/") )
+                /*
+                if( sharedText.startsWith("https://youtu.be/") || sharedText.toLowerCase().contains("youtube.com") ) {
+                    Toast.makeText(this, "Unsupported Site?", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+                else
+                */
                 {
                     String url = "http://youtube-dl55.herokuapp.com/api/info?url=" + sharedText;
                     AsyncGetJSON asyncTask =new AsyncGetJSON(this);
@@ -90,10 +96,6 @@ public class MyActivity extends AppCompatActivity implements AsyncResponse {
 
     }
 
-
-    public void hideIcon(MenuItem item){
-        Toast.makeText(this, "Hiding Icon", Toast.LENGTH_LONG).show();
-    }
 
     public void showAbout(MenuItem item){
         Toast.makeText(this, "Hello World", Toast.LENGTH_LONG).show();

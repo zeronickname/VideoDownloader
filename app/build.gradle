@@ -5,11 +5,11 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "uk.me.gman.videodownloader"
+        applicationId "uk.me.gman.getmedia"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 3
-        versionName "1.2"
+        versionName "0.1"
     }
     buildTypes {
         release {

@@ -1,4 +1,4 @@
-package uk.me.gman.videodownloader;
+package uk.me.gman.getmedia;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

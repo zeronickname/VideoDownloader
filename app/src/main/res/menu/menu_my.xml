@@ -1,17 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="uk.me.gman.videodownloader.MyActivity">
+    tools:context="uk.me.gman.getmedia.MyActivity">
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/hide_settings"
-        android:orderInCategory="100"
-        android:title="@string/hide_settings"
-        android:onClick="hideIcon"
         app:showAsAction="never" />
     <item
         android:id="@+id/about_settings"
