@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -22,9 +23,15 @@ public class AsyncGetJSON extends AsyncTask<String, Integer, Long> {
 
     public AsyncResponse delegate = null;
     private Context context;
-    public AsyncGetJSON( Activity mAct) {
+    private TextView textView;
+    private CharSequence defaultText;
+
+    public AsyncGetJSON( Activity mAct, TextView text ) {
         //this.delegate = mAct;
         context = mAct.getApplicationContext();
+
+        textView = text;
+        defaultText = textView.getText();
     }
 
 
@@ -121,11 +128,14 @@ public class AsyncGetJSON extends AsyncTask<String, Integer, Long> {
 
     protected void onProgressUpdate(Integer... progress) {
         if (progress[0] == 1) {
-            Toast.makeText(context, "Getting Video URL", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Getting Video URL", Toast.LENGTH_SHORT).show();
+            textView.setText(defaultText + "Getting Video URL...\n");
         } else if (progress[0] == 2) {
             Toast.makeText(context, "Starting Download", Toast.LENGTH_LONG).show();
+            textView.setText(defaultText + "Starting Download...\n");
         } else if (progress[0] == 0xFF) {
             Toast.makeText(context, "Unsupported site?" , Toast.LENGTH_LONG).show();
+            textView.setText(defaultText + "Unsupported site?\n");
         }
     }
 
