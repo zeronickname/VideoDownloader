@@ -59,7 +59,6 @@ public class HandleDownload extends AppCompatActivity implements AsyncResponse {
                 if(numClicks < 5) {
                     if (sharedText.startsWith("https://youtu.be/") || sharedText.toLowerCase().contains("youtube.com")) {
                         Toast.makeText(this, "Unsupported Site?", Toast.LENGTH_LONG).show();
-                        finish();
 						return;
                     }
                 }
