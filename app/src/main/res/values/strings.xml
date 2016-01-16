@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">getmedia</string>
+    <string name="app_name">Get Media!</string>
     <string name="action_settings">Settings</string>
     <string name="hide_settings">Hide From Launcher</string>
     <string name="about_settings">About</string>

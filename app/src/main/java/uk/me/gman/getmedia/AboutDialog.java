@@ -6,9 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 
-/**
- * Created by micro on 16/01/2016.
- */
 public class AboutDialog extends DialogFragment {
 
     private Context mCont;
