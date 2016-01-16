@@ -77,7 +77,7 @@ public class MyActivity extends AppCompatActivity {
 
 
     public void showAbout(MenuItem item){
-        AboutDialog myDiag = new AboutDialog(this.getApplicationContext());
+        AboutDialog myDiag = new AboutDialog();
         myDiag.show(getSupportFragmentManager(), "Diag");
         numClicks++;
 

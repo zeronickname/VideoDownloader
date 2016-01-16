@@ -9,17 +9,13 @@ import android.support.v7.app.AlertDialog;
 public class AboutDialog extends DialogFragment {
 
     private Context mCont;
-    public AboutDialog(Context context)
-    {
-        mCont = context;
-    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         String versionCode = "unknown";
         try {
-            versionCode = mCont.getPackageManager().getPackageInfo(mCont.getPackageName(), 0).versionName;
+            versionCode = BuildConfig.VERSION_NAME;
         }
         catch (Exception e) {
             e.printStackTrace();
