@@ -13,6 +13,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+
 
 public class MyActivity extends AppCompatActivity implements AsyncResponse {
 
@@ -85,7 +89,20 @@ public class MyActivity extends AppCompatActivity implements AsyncResponse {
                 else
                 */
                 {
-                    String url = "http://youtube-dl55.herokuapp.com/api/info?url=" + sharedText;
+                    Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+                    calendar.setTime(new Date());               //Set the Calendar to now
+                    int hour = calendar.get(Calendar.HOUR_OF_DAY); //Get the hour from the calendar
+
+                    String url = "http://";
+                    // We're running on a free heroku instance. THey need to sleep for atleast 6 hrs in a day
+                    // SO lets just run two free instances and swap between them depending on teh time of the day, giving each instance a chance to sleep for 12hrs
+                    if(hour >= 0 && hour <= 12)
+                    {
+                        url += "youtube-dl55.";
+                    } else {
+                        url += "youtube-dl99.";
+                    }
+                    url += "herokuapp.com/api/info?url=" + sharedText;
                     AsyncGetJSON asyncTask =new AsyncGetJSON(this);
                     asyncTask.delegate = this;
                     asyncTask.execute(url);
