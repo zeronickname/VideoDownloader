@@ -1,9 +1,9 @@
 # VideoDownloader
 A simple android app that just downloads videos shared to it by using youtube-dl as the backend (hosted on heroku)
 
-There is an alpha version currently in the play store. Email me if you want a link to the alpha test. I'm still concerned that google is doing to suspend the app if they catch wind of the fact that it allows youtube downloads
+Get it from [the Play Store](https://play.google.com/store/apps/details?id=uk.me.gman.getmedia)
 
-Or just get the [precompiled apk directly from the repo](https://github.com/zeronickname/VideoDownloader/raw/master/app/app-release.apk)
+Or just get the [precompiled apk from the repo](https://github.com/zeronickname/VideoDownloader/raw/master/app/app-release.apk)
 Note that the app has been renamed to "Get Media!" as there is already a VideoDownloader app on the play store
 
 # Use
