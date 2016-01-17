@@ -4,6 +4,13 @@
     tools:context="uk.me.gman.getmedia.MyActivity">
 
     <item
+        android:id="@+id/hide_app"
+        android:orderInCategory="100"
+        android:onClick="hideApp"
+        android:title="@string/hide_app"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/about_settings"
         android:orderInCategory="100"
         android:onClick="showAbout"

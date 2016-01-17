@@ -1,7 +1,6 @@
 package uk.me.gman.getmedia;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -61,6 +60,12 @@ public class MyActivity extends AppCompatActivity {
 
     }
 
+    public void hideApp(MenuItem item) {
+        PackageManager p = getPackageManager();
+        p.setComponentEnabledSetting(getComponentName(), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+
+        Toast.makeText(this, "Done! (you may need to reboot)", Toast.LENGTH_LONG).show();
+    }
 
     public void showAbout(MenuItem item){
         AboutDialog myDiag = new AboutDialog();
