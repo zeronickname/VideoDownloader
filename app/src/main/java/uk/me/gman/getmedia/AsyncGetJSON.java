@@ -40,6 +40,7 @@ public class AsyncGetJSON extends AsyncTask<String, Integer, Long> {
     protected Long doInBackground(String... params) {
         URL url;
         HttpURLConnection urlConnection = null;
+
         try {
             url = new URL(params[0]);
             //url = new URL("http://youtube-dl55.herokuapp.com/api/info?url=https://youtu.be/R_dd7eVGAh0");
@@ -64,6 +65,8 @@ public class AsyncGetJSON extends AsyncTask<String, Integer, Long> {
             String downloadURL = json.getJSONObject("info").get("url").toString();
             String fileName = json.getJSONObject("info").get("title").toString() + "." + json.getJSONObject("info").get("ext").toString();
 
+            fileName = fileName.replace("#", "");
+
                 /*
                 //DO we care? Just download teh default file
                 JSONArray jsonT = json.getJSONObject("info").getJSONArray("formats");
@@ -74,6 +77,7 @@ public class AsyncGetJSON extends AsyncTask<String, Integer, Long> {
                 */
 
             Log.i(TAG, "downloadUrl: " + downloadURL);
+            Log.i(TAG, "fileName: " + fileName);
 
             publishProgress(2);
 
