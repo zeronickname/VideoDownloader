@@ -65,7 +65,8 @@ public class AsyncGetJSON extends AsyncTask<String, Integer, Long> {
             String downloadURL = json.getJSONObject("info").get("url").toString();
             String fileName = json.getJSONObject("info").get("title").toString() + "." + json.getJSONObject("info").get("ext").toString();
 
-            fileName = fileName.replace("#", "");
+            // remove all references to #, ', ", [ & ] from the filename
+            fileName = fileName.replaceAll("[\"#'\\[\\]]", "");
 
                 /*
                 //DO we care? Just download teh default file

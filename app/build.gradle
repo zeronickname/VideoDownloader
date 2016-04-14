@@ -8,8 +8,8 @@ android {
         applicationId "uk.me.gman.getmedia"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 8
-        versionName "1.01"
+        versionCode 9
+        versionName "1.02"
     }
     buildTypes {
         release {
