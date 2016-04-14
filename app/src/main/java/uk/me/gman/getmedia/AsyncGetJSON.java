@@ -65,11 +65,11 @@ public class AsyncGetJSON extends AsyncTask<String, Integer, Long> {
             String downloadURL = json.getJSONObject("info").get("url").toString();
             String fileName = json.getJSONObject("info").get("title").toString() + "." + json.getJSONObject("info").get("ext").toString();
 
-            // remove all references to #, ', ", [ & ] from the filename
-            fileName = fileName.replaceAll("[\"#'\\[\\]]", "");
+            // remove all special characters from the filename
+            fileName = fileName.replaceAll("[^\\w\\s.-]", "");
 
                 /*
-                //DO we care? Just download teh default file
+                //DO we care? Just download the default file
                 JSONArray jsonT = json.getJSONObject("info").getJSONArray("formats");
                 int id = findIdToDownload(jsonT, "mp4", 720);
                 if(id != -1) {
